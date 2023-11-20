@@ -13,6 +13,7 @@ steps:
     terraformVersion: 0.12.11
 
 - task: TerraformTaskV4@4
+  displayName: Terraform- Init' 
   inputs:
     provider: 'azurerm'
     command: 'init'
@@ -23,17 +24,20 @@ steps:
     backendAzureRmKey: '0seHMQKA6FPH3uH4HhHXeF8x7XyIYTU8uygyV9uS8KSPIA7UFVKPoGPktNGV0KfYvLHS7tgcnrUt+AStngpq1w=='
 
 - task: TerraformTaskV4@4
+  displayName: Terraform- Plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
     environmentServiceNameAzureRM: 'iacterraforminfradeployment'
 
 - task: TerraformTaskV4@4
+  displayName: Terraform- Validate'
   inputs:
     provider: 'azurerm'
     command: 'validate'
 
 - task: TerraformTaskV4@4
+  displayName: Terraform- Apply Infra provisioning'
   inputs:
     provider: 'azurerm'
     command: 'apply'
