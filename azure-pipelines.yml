@@ -2,8 +2,8 @@ trigger:
 - master
  
 pool:
-  name: Azure Pipelines
-  vmImage: 'ubuntu-latest'
+  name: iacmanagedpool
+  vmImage: 'windows-latest'
 
 steps:
 
