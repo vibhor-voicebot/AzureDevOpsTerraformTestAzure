@@ -1,0 +1,39 @@
+trigger:
+- master
+ 
+pool:
+  name: Azure Pipelines
+  vmImage: 'vs2017-win2016'
+
+steps:
+
+- task: TerraformInstaller@2
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'iacterraforminfradeployment'
+    backendAzureRmResourceGroupName: 'example-resource-group'
+    backendAzureRmStorageAccountName: 'iacqaautomationtstate'
+    backendAzureRmContainerName: 'tstate'
+    backendAzureRmKey: '0seHMQKA6FPH3uH4HhHXeF8x7XyIYTU8uygyV9uS8KSPIA7UFVKPoGPktNGV0KfYvLHS7tgcnrUt+AStngpq1w=='
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'iacterraforminfradeployment'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'iacterraforminfradeployment'
