@@ -88,6 +88,7 @@ resource "azurerm_virtual_machine" "iacqaautomationvm01" {
     admin_username = "iacqauser"
     admin_password = "Password123$"
   }
+
   os_profile_windows_config {
   }
 }
