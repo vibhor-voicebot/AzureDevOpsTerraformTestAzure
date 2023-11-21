@@ -74,7 +74,7 @@ resource "azurerm_virtual_machine" "iacqaautomationvm01" {
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2019-Datacenter-Server-Core-smalldisk"
+    sku       = "2019-Datacenter-Core"
     version   = "latest"
   }
   storage_os_disk {
