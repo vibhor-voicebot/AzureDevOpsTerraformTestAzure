@@ -65,8 +65,8 @@ resource "azurerm_network_interface" "vmnic" {
   }
 }
 # Create our Virtual Machine
-resource "azurerm_virtual_machine" "iacqaautomationvm01" {
-  name                  = "iacqaautomationvm01"
+resource "azurerm_virtual_machine" "iacqavm01" {
+  name                  = "iacqavm01"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.vmnic.id]
@@ -78,13 +78,13 @@ resource "azurerm_virtual_machine" "iacqaautomationvm01" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "iacqaautomationvm01os"
+    name              = "iacqavm01os"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "iacqaautomationvm01"
+    computer_name  = "iacqavm01"
     admin_username = "iacqauser"
     admin_password = "Password123$"
   }
