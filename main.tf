@@ -49,12 +49,12 @@ resource "azurerm_storage_account" "iacqaautomationsa" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = "jonnychipzenv1"
+    environment = "dev"
   }
 }
 # Create our vNIC for our VM and assign it to our Virtual Machines Subnet
 resource "azurerm_network_interface" "vmnic" {
-  name                = "iacqavm01nic"
+  name                = "iacqavm02nic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -65,8 +65,8 @@ resource "azurerm_network_interface" "vmnic" {
   }
 }
 # Create our Virtual Machine
-resource "azurerm_virtual_machine" "iacqavm01" {
-  name                  = "iacqavm01"
+resource "azurerm_virtual_machine" "iacqavm02" {
+  name                  = "iacqavm02"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.vmnic.id]
@@ -78,13 +78,13 @@ resource "azurerm_virtual_machine" "iacqavm01" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "iacqavm01os"
+    name              = "iacqavm02os"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "iacqavm01"
+    computer_name  = "iacqavm02"
     admin_username = "iacqauser"
     admin_password = "Password123$"
   }
