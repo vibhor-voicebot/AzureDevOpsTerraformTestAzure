@@ -8,9 +8,9 @@ pool:
 steps:
 
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-  displayName: ‘Install Terraform 0.12.11’
+  displayName: ‘Install Terraform 2.0.0’
   inputs:
-    terraformVersion: 0.12.11
+    terraformVersion: 2.0.0
 
 - task: TerraformTaskV4@4
   displayName: Terraform- Init' 
