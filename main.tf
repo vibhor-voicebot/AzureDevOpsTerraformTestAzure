@@ -54,7 +54,7 @@ resource "azurerm_storage_account" "iacqaautomationsa" {
 }
 # Create our vNIC for our VM and assign it to our Virtual Machines Subnet
 resource "azurerm_network_interface" "vmnic" {
-  name                = "iacqaautomationvm01nic"
+  name                = "iacqavm01nic"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
