@@ -25,7 +25,7 @@ data "azurerm_client_config" "current" {}
 # Create our Resource Group
 resource "azurerm_resource_group" "rg" {
   name     = "iacqaautomation-app01"
-  location = "US East"
+  location = "eastus"
 }
 # Create our Virtual Network - Jonnychipz-VNET
 resource "azurerm_virtual_network" "vnet" {
